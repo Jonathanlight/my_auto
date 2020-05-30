@@ -29,7 +29,7 @@
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($reponses as $reponse): ?>    
+            <?php foreach ($users as $reponse): ?>    
               <tr>
                 <td> <?= $reponse['id'] ?> </td>
                 <td> <?= $reponse['nom'].' '.$reponse['prenom'] ?> </td>

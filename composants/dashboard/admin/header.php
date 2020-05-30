@@ -17,6 +17,9 @@
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- Datepicker v4 CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
+
     <!-- Favicons -->
     <link rel="icon" href="../../assets/images/apps/logo.jpg" sizes="32x32" type="image/png">
     <meta name="theme-color" content="#563d7c">
