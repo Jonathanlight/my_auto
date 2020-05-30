@@ -3,7 +3,7 @@
 require_once '../../functions/database.php';
 	//le code jusqu a ligne 8 c pour pas qu'on rajoute un admin dans la liste User
 	$role = 'ROLE_USER';
-	$sth = $connexion->prepare('SELECT * FROM user WHERE role = :role');
+	$sth = $connexion->prepare('SELECT * FROM user WHERE role = :role AND delete_at IS NULL ');
 	$sth->bindParam(':role', $role);
 	$sth->execute();
 

@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
 	}
 
 	//
-	$sth = $connexion->prepare('SELECT * FROM user WHERE email = :emailParam');
+	$sth = $connexion->prepare('SELECT * FROM user WHERE email = :emailParam AND delete_at IS NULL');
 	$sth->bindParam(':emailParam', $_POST['email']);
 	$sth->execute();
 

@@ -1,5 +1,6 @@
 <?php include_once('../../composants/dashboard/admin/header.php'); ?>
 <?php include_once('../../functions/admin/listUser.php'); ?>
+<?php include_once('../../functions/admin/deleteUser.php'); ?>
 
 <div class="container-fluid">
   <div class="row">
@@ -49,7 +50,7 @@
                   </a>
                 </td>
                 <td>
-                  <a class="btn btn-danger" href="">
+                  <a class="btn btn-danger" href="dashboard.php?id_user=<?php echo $reponse['id']?>">
                     <i class="fa fa-close"></i>
                   </a>
                 </td>
