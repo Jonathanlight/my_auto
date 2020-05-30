@@ -9,5 +9,5 @@ require_once '../../functions/database.php';
 
 	// fetchAll pour recupere plusieurs ligne depuis la base de donnée
 	// fetch qui recupere une seule ligne 
-	$reponses = $sth->fetchAll();
+	$users = $sth->fetchAll();
 ?>
