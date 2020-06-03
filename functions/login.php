@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
 		return false;
 	}
 
-	//
+	//si c plus false (par rapport a la fonction validate true)
 	$sth = $connexion->prepare('SELECT * FROM user WHERE email = :emailParam AND delete_at IS NULL');
 	$sth->bindParam(':emailParam', $_POST['email']);
 	$sth->execute();
