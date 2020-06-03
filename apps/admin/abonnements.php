@@ -1,5 +1,5 @@
 <?php include_once('../../composants/dashboard/admin/header.php'); ?>
-
+<?php include_once('../../functions/admin/listAbonnement.php'); ?>
 <div class="container-fluid">
   <div class="row">
 
@@ -12,68 +12,29 @@
 
       <?php include_once('../../composants/flashMessage.php'); ?>
 
-      <div class="col-md-12 p-lg-5 mx-auto my-5">
-
-        <h1 class="display-5 font-weight-normal">Nouvel abonnement</h1>
-      
-        <form method="POST" action="abonnements.php">
-          <div class="row mb-4">
-            <div class="col-md-6">
-              <label for="user" class="mr-sm-2">Id</label>
-              <select name="user" class="form-control" id="user">
-                <?php foreach ($users as $reponse): ?> 
-                  <option value="<?= $reponse['id'] ?>"> <?= $reponse['email'] ?> - <?= $reponse['nom'] ?> <?= $reponse['prenom'] ?> </option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="forfait" class="mr-sm-2">Forfait:</label>
-              <select name="forfait" class="form-control" id="forfait">
-                <?php foreach ($users as $reponse): ?> 
-                  <option value="<?= $reponse['id'] ?>"> <?= $reponse['email'] ?> - <?= $reponse['nom'] ?> <?= $reponse['prenom'] ?> </option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-          </div>
-
-          <button type="submit" name="seance" class="btn btn-primary btn-block">Enregistrer</button>
-        </form>
-      </div>
-
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th>#</th>
-              <th>Type</th>
-              <th>Adresse</th>
-              <th>Date de debut</th>
-              <th>Date de fin </th>
-              <th>Moniteur</th>
-              <th>Création </th>
-              <th colspan="2">Action</th>
+              <th>Nom Prenom</th>
+              <th>Forfait</th>
+              <th>Nombre d'Forfait</th>
+              <th>Prix</th>
+              <th>Card Credit</th>
+              <th>Date de l'abonnement </th>
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($seances as $reponse): ?>  
+            <?php foreach ($abonnements as $abonnement): ?>  
             <tr>
-              <td> <?= $reponse['id_seance'] ?> </td>
-              <td> <?= $reponse['type'] ?> </td>
-              <td> <?= $reponse['adresse_seance'] .' '.$reponse['ville_seance'].', '.$reponse['code_postal_seance'] ?></td>
-              <td> <?= $reponse['date_debut'] ?> </td>
-              <td> <?= $reponse['date_fin'] ?> </td>
-              <td> <?= $reponse['email_user_moniteur'] ?> </td>
-              <td> <?= $reponse['created_at_seance'] ?> </td>
-              <td>
-                <a class="btn btn-success" href="">
-                  <i class="fa fa-edit"></i>
-                </a>
-              </td>
-              <td>
-                <a class="btn btn-danger" href="">
-                  <i class="fa fa-close"></i>
-                </a>
-              </td>
+              <td> <?= $abonnement['id_abonnement']?></td>
+              <td> <?= $abonnement['nom'].' '.$abonnement['prenom']?> </td>
+              <td> <?= $abonnement['nom_forfait'] ?> </td>
+              <td> <?= $abonnement['number_heure'] ?></td>
+              <td> <?= $abonnement['prix_forfait'] ?></td>
+              <td> <?= $abonnement['credit_card'] ?> </td>
+              <td> <?= $abonnement['date_abonnement'] ?> </td>
             </tr>
             <?php endforeach; ?>
             

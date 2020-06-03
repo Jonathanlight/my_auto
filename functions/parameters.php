@@ -1,18 +1,23 @@
 <?php 
 //Demarre la session
 	session_start();
+	// si dans la superglobale $SESSION le user id existe ca va l'affiche sinon ca sera = à null
 	//si la personne est connecté
-	if ($_SESSION['user_id'] !== null) {
-	  // TODO(par exemple limite de connexion)
-	} 
-	//si la personne est pas connecte
-	else {
+	if (isset($_SESSION['user_id'])) {
+		if ($_SESSION['user_id'] !== null) {
+		  // TODO(par exemple limite de connexion)
+		} 
+		//si la personne est pas connecte
+		else {
+			$_SESSION['user_id'] = null;
+			$_SESSION['email'] = null;
+			$_SESSION['role'] = null;
+			$_SESSION['active'] = null;
+			$_SESSION['nom'] = null;
+			$_SESSION['prenom'] = null;
+		}
+	} else {
 		$_SESSION['user_id'] = null;
-		$_SESSION['email'] = null;
-		$_SESSION['role'] = null;
-		$_SESSION['active'] = null;
-		$_SESSION['nom'] = null;
-		$_SESSION['prenom'] = null;
 	}
 
 	$data = [

@@ -47,6 +47,9 @@ if (isset($_POST['forfait'])) {
 				'reponse' => true,
 				'message' => 'Votre forfait à bien été créer'
 			];
+
+			header('Location: ' . $_SERVER['PHP_SELF']);
+			die;
 		} else {
 			$data = [
 				'reponse' => false,

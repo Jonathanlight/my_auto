@@ -10,6 +10,10 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Forfait</h1>
+
+        <a class="btn btn-warning" href="../../functions/admin/generate_credit_card.php">
+          Generer des card
+        </a>
       </div>
 
       <?php include_once('../../composants/flashMessage.php'); ?>

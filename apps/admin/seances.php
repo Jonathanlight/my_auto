@@ -23,11 +23,11 @@
           <div class="row mb-4">
             <div class="col-md-6">
               <label for="date_start" class="mr-sm-2">Date de debut:</label>
-              <input type="date" class="form-control" id="date_start datetimepicker" name="date_start">
+              <input type="datetime-local" class="form-control" id="date_start" name="date_start">
             </div>
             <div class="col-md-6">
               <label for="date_end" class="mr-sm-2">Date de fin:</label>
-              <input type="date" id="date_end datetimepicker" class="form-control" name="date_end">
+              <input type="datetime-local" id="date_end" class="form-control" name="date_end">
             </div>
           </div>
 
