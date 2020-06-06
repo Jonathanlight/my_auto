@@ -36,12 +36,12 @@ if (isset($_POST['register'])) {
 		return false;
 	}
 
-	//traitement = $sth
+	//traitement = $sth (on le fait une fois que les infos du formulaire pour nom prenom date naiss et email sont acceptées)
 	$sth = $connexion->prepare('SELECT * FROM user WHERE email = :emailParam');
 	$sth->bindParam(':emailParam', $_POST['email']);
 	$sth->execute();
 
-	$reponse = $sth->fetch();
+	$reponse = $sth->fetch();// reponse renvoie true si elle récupere qq chose suite à la requête sinon elle renvoie false
 
 	if ($reponse == true) {
 		$data = [
@@ -74,7 +74,7 @@ if (isset($_POST['register'])) {
 		];
 		return false;
 	}
-
+    //une fois que ttes les infos du formulaire sont acceptées --> je peux insérer
 	if ($data['reponse'] !== false) {
 		//Insertion en base de donnée
 		$sth = $connexion->prepare('INSERT INTO user (nom, prenom, email, role, password, date_naissance, reference) VALUES (:nom, :prenom, :email, :role, :password, :date_naissance, :reference)');

@@ -2,7 +2,7 @@
 //Demarre la session
 	session_start();
 	// si dans la superglobale $SESSION le user id existe ca va l'affiche sinon ca sera = à null
-	//si la personne est connecté
+	//si y'a eu personne qui s'est connecté
 	if (isset($_SESSION['user_id'])) {
 		if ($_SESSION['user_id'] !== null) {
 		  // TODO(par exemple limite de connexion)

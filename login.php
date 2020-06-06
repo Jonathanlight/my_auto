@@ -18,7 +18,7 @@
 		  <div class="form-group">
 		    <input type="password" class="form-control" placeholder="Password" id="password" name="password">
 		  </div>
-		  <button type="submit" name="login" class="btn btn-primary btn-block">Se connecte</button>
+		  <button type="submit" name="login" class="btn btn-primary btn-block">Se connecter</button>
 		</form>
 	</div>
 </div>
