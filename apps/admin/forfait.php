@@ -12,7 +12,7 @@
         <h1 class="h2">Forfait</h1>
 
         <a class="btn btn-warning" href="../../functions/admin/generate_credit_card.php">
-          Generer des card
+          Générer des cartes
         </a>
       </div>
 
@@ -44,7 +44,7 @@
               <th>#</th>
               <th>Nom</th>
               <th>Prix</th>
-              <th>Nombre d'heure</th>
+              <th>Nombre d'heures</th>
               <th colspan="2">Action</th>
             </tr>
           </thead>

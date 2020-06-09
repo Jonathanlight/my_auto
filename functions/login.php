@@ -7,7 +7,7 @@ if (isset($_POST['login'])) {
 	if (validateForm($_POST['email']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner votre email !'
+			'message' => 'Veuillez renseigner votre email !'
 		];
 		return false;
 	}
@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
 	if (validateForm($_POST['password']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner votre mot de passe !'
+			'message' => 'Veuillez renseigner votre mot de passe !'
 		];
 		return false;
 	}

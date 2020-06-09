@@ -7,7 +7,7 @@ if (isset($_POST['abonnement'])) {
 	if (validateForm($_POST['card']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner une carte de credit !'
+			'message' => 'Veuillez renseigner une carte de credit !'
 		];
 		return false;
 	}
@@ -15,7 +15,7 @@ if (isset($_POST['abonnement'])) {
 	if (validateForm($_POST['forfait']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez choisir un forfait !'
+			'message' => 'Veuillez choisir un forfait !'
 		];
 		return false;
 	}
@@ -30,7 +30,7 @@ if (isset($_POST['abonnement'])) {
 	if ($repCard !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez entrer une card valide !'
+			'message' => 'Veuillez entrer une carte valide !'
 		];
 		return false;
 	}

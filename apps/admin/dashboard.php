@@ -22,8 +22,8 @@
               <th>Nom - Prénom</th>
               <th>Email</th>
               <th>Rôle</th>
-              <th>Numbre d'heure</th>
-              <th>Numbre disponible</th>
+              <th>Nombre d'heures</th>
+              <th>Nombre d'heures disponibles</th>
               <th>Date d'inscription</th>
               <th colspan="3">Action</th>
             </tr>

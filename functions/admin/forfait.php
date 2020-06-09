@@ -7,7 +7,7 @@ if (isset($_POST['forfait'])) {
 	if (validateForm($_POST['nom']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner un nom !'
+			'message' => 'Veuillez renseigner un nom !'
 		];
 		return false;
 	}
@@ -15,7 +15,7 @@ if (isset($_POST['forfait'])) {
 	if (validateForm($_POST['prix']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner un prix !'
+			'message' => 'Veuillez renseigner un prix !'
 		];
 		return false;
 	}
@@ -23,7 +23,7 @@ if (isset($_POST['forfait'])) {
 	if (validateForm($_POST['number_time']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner un nombre d\'heures !'
+			'message' => 'Veuillez renseigner un nombre d\'heures !'
 		];
 		return false;
 	}

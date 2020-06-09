@@ -7,7 +7,7 @@ if (isset($_POST['seance'])) {
 	if (validateForm($_POST['date_start']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner une date de debut !'
+			'message' => 'Veuillez renseigner une date de debut !'
 		];
 		return false;
 	}
@@ -15,7 +15,7 @@ if (isset($_POST['seance'])) {
 	if (validateForm($_POST['date_end']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner une date de fin !'
+			'message' => 'Veuillez renseigner une date de fin !'
 		];
 		return false;
 	}
@@ -23,7 +23,7 @@ if (isset($_POST['seance'])) {
 	if (validateForm($_POST['address']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner une adresse !'
+			'message' => 'Veuillez renseigner une adresse !'
 		];
 		return false;
 	}
@@ -31,7 +31,7 @@ if (isset($_POST['seance'])) {
 	if (validateForm($_POST['city']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner une ville !'
+			'message' => 'Veuillez renseigner une ville !'
 		];
 		return false;
 	}
@@ -39,7 +39,7 @@ if (isset($_POST['seance'])) {
 	if (validateForm($_POST['code_postal']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner un code postal !'
+			'message' => 'Veuillez renseigner un code postal !'
 		];
 		return false;
 	}
@@ -47,7 +47,7 @@ if (isset($_POST['seance'])) {
 	if (validateForm($_POST['type']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner un type de seance !'
+			'message' => 'Veuillez renseigner un type de seance !'
 		];
 		return false;
 	}
@@ -55,7 +55,7 @@ if (isset($_POST['seance'])) {
 	if (validateForm($_POST['user']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner un utilisateur !'
+			'message' => 'Veuillez renseigner un utilisateur !'
 		];
 		return false;
 	}

@@ -43,9 +43,9 @@
               <th>#</th>
               <th>Nom Prenom</th>
               <th>Forfait</th>
-              <th>Nombre d'Forfait</th>
+              <th>Nombre d'heures forfait</th>
               <th>Prix</th>
-              <th>Card Credit</th>
+              <th>Cartes de credit</th>
               <th>Date de l'abonnement </th>
             </tr>
           </thead>

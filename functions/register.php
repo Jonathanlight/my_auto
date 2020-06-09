@@ -7,7 +7,7 @@ if (isset($_POST['register'])) {
 	if (validateForm($_POST['nom']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner votre nom !'
+			'message' => 'Veuillez renseigner votre nom !'
 		];
 		return false;
 	}
@@ -15,7 +15,7 @@ if (isset($_POST['register'])) {
 	if (validateForm($_POST['prenom']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner votre prenom !'
+			'message' => 'Veuillez renseigner votre prenom !'
 		];
 		return false;
 	}
@@ -23,7 +23,7 @@ if (isset($_POST['register'])) {
 	if (validateForm($_POST['birthday']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner votre date de naissance !'
+			'message' => 'Veuillez renseigner votre date de naissance !'
 		];
 		return false;
 	}
@@ -31,7 +31,7 @@ if (isset($_POST['register'])) {
 	if (validateForm($_POST['email']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner votre email !'
+			'message' => 'Veuillez renseigner votre email !'
 		];
 		return false;
 	}
@@ -54,7 +54,7 @@ if (isset($_POST['register'])) {
 	if (validateForm($_POST['password']) !== true && validateForm($_POST['password_confirm']) !== true) {
 		$data = [
 			'reponse' => false,
-			'message' => 'Veillez renseigner votre mot de passe et le confirmer !'
+			'message' => 'Veuillez renseigner votre mot de passe et le confirmer !'
 		];
 		return false;
 	}
