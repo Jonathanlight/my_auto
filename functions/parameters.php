@@ -15,6 +15,8 @@
 			$_SESSION['active'] = null;
 			$_SESSION['nom'] = null;
 			$_SESSION['prenom'] = null;
+			$_SESSION['number_heure'] = null;
+			$_SESSION['number_disponible'] = null;
 		}
 	} else {
 		$_SESSION['user_id'] = null;

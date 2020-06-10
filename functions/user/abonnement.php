@@ -40,7 +40,8 @@ if (isset($_POST['abonnement'])) {
 	$sth2 = $connexion->prepare('SELECT * FROM forfait WHERE id = :id_forfait');
 	$id_forfait = $_POST['forfait'];
 	$sth2->bindParam(':id_forfait', $id_forfait);
-	$repForfait = $sth2->execute();
+	$sth2->execute(); // retourne true
+	$repForfait = $sth2->fetch(); // retourne la valeur qui est type array (tableau)
 	$sth2->closeCursor();
 
 	if ($repCard['solde'] < $repForfait['prix_forfait']) {
@@ -57,13 +58,11 @@ if (isset($_POST['abonnement'])) {
 	$id_user = $_SESSION['user_id'];
 	$number_heure = $_SESSION['number_heure'] + $repForfait['number_heure'];
 	$number_disponible = $_SESSION['number_disponible'] + $repForfait['number_heure'];
-	$req = $sth3->execute(
-		[
-			":number_heure" => $number_heure,
-			":number_disponible" => $number_disponible,
-			":id_user" => $id_user,
-		]
-	);
+
+	$sth3->bindParam(':number_heure', $number_heure);
+	$sth3->bindParam(':number_disponible', $number_disponible);
+	$sth3->bindParam(':id_user', $id_user);
+	$req = $sth3->execute();
 	$sth3->closeCursor();
 
 	if ($req == false) {
@@ -77,11 +76,12 @@ if (isset($_POST['abonnement'])) {
 	// Retire le prix du forfait dans le compte bancaire utilise
 	$new_solde = $repCard['solde'] - $repForfait['prix_forfait'];
 	$sth4 = $connexion->prepare('UPDATE card SET solde = :solde WHERE id = :card');
-	$req = $sth4->execute(
-		array(':solde' => $new_solde, ':card' => $repCard['id'])
-	);
 
-	//var_dump($repCard, ); die;
+	$card = $repCard['id'];
+	$sth4->bindParam(':solde', $new_solde);
+	$sth4->bindParam(':card', $card);
+
+	$req = $sth4->execute();
 
 	//$req = $sth4->rowCount();
 
@@ -108,6 +108,9 @@ if (isset($_POST['abonnement'])) {
 		$sth->bindParam(':forfait_id', $forfait);
 		$sth->bindParam(':credit_card', $card);
 		$rep = $sth->execute();
+
+		$_SESSION['number_heure'] = $number_heure;
+		$_SESSION['number_disponible'] = $number_disponible;
 
 		if ($rep == true) {
 			$data = [
