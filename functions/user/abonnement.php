@@ -20,14 +20,16 @@ if (isset($_POST['abonnement'])) {
 		return false;
 	}
 
-	$sth = $connexion->prepare('SELECT * FROM card WHERE number_card = :card');
+	$sth1 = $connexion->prepare('SELECT * FROM card WHERE number_card = :card');
 	$card = htmlentities($_POST['card']);
-	$sth->bindParam(':card', $card);
-	$sth->execute();
+	$sth1->bindParam(':card', $card);
+	$req = $sth1->execute();
 
-	$repCard =  $sth->fetch();
+	$repCard =  $sth1->fetch();
+	$sth1->closeCursor();
 
-	if ($repCard !== true) {
+	// Ont verifie si $repCard est vide
+	if (!$repCard) {
 		$data = [
 			'reponse' => false,
 			'message' => 'Veuillez entrer une carte valide !'
@@ -35,33 +37,68 @@ if (isset($_POST['abonnement'])) {
 		return false;
 	}
 
-	$repCard['solde'];
+	$sth2 = $connexion->prepare('SELECT * FROM forfait WHERE id = :id_forfait');
+	$id_forfait = $_POST['forfait'];
+	$sth2->bindParam(':id_forfait', $id_forfait);
+	$repForfait = $sth2->execute();
+	$sth2->closeCursor();
 
-	$sth = $connexion->prepare('SELECT * FROM forfait WHERE id = :id_forfait');
-	$id_forfait = htmlentities($_SESSION['forfait']);
-	$sth->bindParam(':id_forfait', $id_forfait);
-	$repForfait = $sth->execute();
+	if ($repCard['solde'] < $repForfait['prix_forfait']) {
+		$data = [
+			'reponse' => false,
+			'message' => 'Le montant de votre carte est insufissant !'
+		];
+		return false;
+	}
 
-	$sth = $connexion->prepare('UPDATE user SET number_heure = :number_heure, number_disponible = :number_disponible WHERE id = :id_user');
+	// Pour modifier le nombre d'heure total et le nombre heure disponible de l'utilisateur
+	$sth3 = $connexion->prepare('UPDATE user SET number_heure = :number_heure, number_disponible = :number_disponible WHERE id = :id_user');
 
 	$id_user = $_SESSION['user_id'];
+	$number_heure = $_SESSION['number_heure'] + $repForfait['number_heure'];
+	$number_disponible = $_SESSION['number_disponible'] + $repForfait['number_heure'];
+	$req = $sth3->execute(
+		[
+			":number_heure" => $number_heure,
+			":number_disponible" => $number_disponible,
+			":id_user" => $id_user,
+		]
+	);
+	$sth3->closeCursor();
 
-	$sth->bindParam(':number_heure', $number_heure);
-	$sth->bindParam(':number_disponible', $number_disponible);
-	$sth->bindParam(':id_user', $id_user);
-	$repForfait = $sth->execute();
+	if ($req == false) {
+		$data = [
+			'reponse' => false,
+			'message' => 'Erreur de traitement 1'
+		];
+		return false;
+	}
 
-	$sth = $connexion->prepare('UPDATE card SET solde = :solde WHERE number_card = :card');
+	// Retire le prix du forfait dans le compte bancaire utilise
+	$new_solde = $repCard['solde'] - $repForfait['prix_forfait'];
+	$sth4 = $connexion->prepare('UPDATE card SET solde = :solde WHERE id = :card');
+	$req = $sth4->execute(
+		array(':solde' => $new_solde, ':card' => $repCard['id'])
+	);
 
-	$id_user = $_SESSION['user_id'];
-	$sth->bindParam(':number_card', $number_card);
-	$sth->bindParam(':card', $card);
-	$repForfait = $sth->execute();
+	//var_dump($repCard, ); die;
+
+	//$req = $sth4->rowCount();
+
+	$sth4->closeCursor();
+
+	if ($req == false) {
+		$data = [
+			'reponse' => false,
+			'message' => 'Erreur de traitement 2'
+		];
+		return false;
+	}
 
 
 	if ($data['reponse'] !== false) {
 		//Insertion en base de donnée
-		$sth = $connexion->prepare('INSERT INTO seance (user_id, forfait_id, credit_card) VALUES (:user_id, :forfait_id, :credit_card)');
+		$sth = $connexion->prepare('INSERT INTO abonnement (user_id, forfait_id, credit_card) VALUES (:user_id, :forfait_id, :credit_card)');
 
 		$user = $_SESSION['user_id'];
 		$card = $_POST['card'];
@@ -77,6 +114,8 @@ if (isset($_POST['abonnement'])) {
 				'reponse' => true,
 				'message' => 'Votre abonnement à bien été créer'
 			];
+			//header('Location: ' . $_SERVER['PHP_SELF']);
+			//die;
 		} else {
 			$data = [
 				'reponse' => false,

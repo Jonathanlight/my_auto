@@ -22,7 +22,7 @@
       
         <form method="POST" action="abonnements.php">
           <div class="form-group">
-            <input type="name" required class="form-control" placeholder="Card Credit" name="card">
+            <input type="name" required class="form-control" placeholder="Numéro de carte" name="card">
           </div>
           <div class="form-group">
             <label for="forfait" class="mr-sm-2">Forfaits:</label>

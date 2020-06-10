@@ -7,6 +7,8 @@
 		$_SESSION['active'] = null;
 		$_SESSION['nom'] = null;
 		$_SESSION['prenom'] = null;
+		$_SESSION['number_heure'] = null;
+		$_SESSION['number_disponible'] = null;
 
 		header('Location: ../login.php');
 ?>

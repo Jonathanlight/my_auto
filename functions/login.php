@@ -45,6 +45,8 @@ if (isset($_POST['login'])) {
 		$_SESSION['active'] = $reponse['active'];
 		$_SESSION['nom'] = $reponse['nom'];
 		$_SESSION['prenom'] = $reponse['prenom'];
+		$_SESSION['number_heure'] = $reponse['number_heure'];
+		$_SESSION['number_disponible'] = $reponse['number_disponible'];
 	}
 
 	if ($_SESSION['role'] == 'ROLE_USER') {

@@ -89,6 +89,8 @@ if (isset($_POST['seance'])) {
 				'reponse' => true,
 				'message' => 'Votre seance à bien été créer'
 			];
+			header('Location: ' . $_SERVER['PHP_SELF']);
+			die;
 		} else {
 			$data = [
 				'reponse' => false,
