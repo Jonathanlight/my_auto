@@ -93,7 +93,7 @@
               <td> <?= $reponse['email_user_moniteur'] ?> </td>
               <td> <?= $reponse['created_at_seance'] ?> </td>
               <td>
-                <a class="btn btn-success" href="">
+                <a class="btn btn-success" href="edit_seance.php?seance=<?php echo $reponse['id_seance'] ?>">
                   <i class="fa fa-edit"></i>
                 </a>
               </td>
